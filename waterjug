@@ -1,0 +1,39 @@
+def water_jug_solver(jug1_capacity, jug2_capacity, target):
+    jug1 = 0
+    jug2 = 0
+    while True:
+        
+        if jug1 == target or jug2 == target:
+            print(f"Solution found: Jug1 = {jug1}, Jug2 = {jug2}")
+            break
+        
+        if jug1 == 0:
+            jug1 = jug1_capacity
+            print(f"Fill Jug1: Jug1 = {jug1}, Jug2 = {jug2}")
+        
+        elif jug2 < jug2_capacity:
+            pour = min(jug1, jug2_capacity - jug2)
+            jug1 -= pour
+            jug2 += pour
+            print(f"Pour Jug1 to Jug2: Jug1 = {jug1}, Jug2 = {jug2}")
+        
+        elif jug2 == jug2_capacity:
+            jug2 = 0
+            print(f"Empty Jug2: Jug1 = {jug1}, Jug2 = {jug2}")
+        
+        elif jug2 == 0:
+            jug2 = jug2_capacity
+            print(f"Fill Jug2: Jug1 = {jug1}, Jug2 = {jug2}")
+       
+        elif jug1 < jug1_capacity:
+            pour = min(jug2, jug1_capacity - jug1)
+            jug2 -= pour
+            jug1 += pour
+            print(f"Pour Jug2 to Jug1: Jug1 = {jug1}, Jug2 = {jug2}")
+       
+        elif jug1 == jug1_capacity:
+            jug1 = 0
+            print(f"Empty Jug1: Jug1 = {jug1}, Jug2 = {jug2}")
+
+
+water_jug_solver(4, 3, 2)
